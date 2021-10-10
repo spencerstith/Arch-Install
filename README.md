@@ -1,37 +1,10 @@
-## Welcome to GitHub Pages
+# Arch Installation Documentation | Spencer Stith
 
-You can use the [editor on GitHub](https://github.com/spencerstith/Arch-Install/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+## Download & Verification
+1. Download from [here](http://mirrors.acm.wpi.edu/archlinux/iso/2021.10.01/)
+2. Download signiature from [here](https://archlinux.org/download/)
+3. Verify the image using
+```bash
+gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/spencerstith/Arch-Install/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+(image and signiature must be in same location)
