@@ -9,7 +9,7 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 ```
 (image and signiature must be in same location)
 
-4. Put that bad boy in VMware and get going! Allocate 2 GB of memory and 40 GB of storage
+4. Put that bad boy in VMware and get going!
 
 ## Memory Management
 1. Run `fdisk -l` to view drives on the computer.
@@ -17,16 +17,29 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 3. Run `fdisk <drive_name>`
 4. Create a new table with `g`
 5. Create a new partition with `n`
-6. Stick with all of the defaults, creating a 40 GB partition
+6. Stick with all of the defaults, creating an 8 GB partition
 7. Write changes with `w`
 8. Create the file system with `mkfs.ext4 /dev/sda1`
 9. Mount with `mount /dev/sda1 /mnt`
 
-## Installation
-1. Download the essentials with `pacstrap /mnt base linux linux-firmware`
-2. Download vim with `pacman -Sy vim`
+## Installation & Configuration
+1. Install the essentials with `pacstrap /mnt base linux linux-firmware`
+2. Generate the fstab with `genfstab -U /mnt >> /mnt/etc/fstab`
+3. Enter the disk as root with `arch-chroot /mnt`
+4. `exit`
+5. Set the timezone with `ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime` then `hwclock --systohc`
+6. Generate locales with `locale-gen`
+7. Set the hostname with `echo SCSArch > /etc/hostname`
+8. Add hosts with `nano /etc/hosts`
+9. Add:
 
-## Desktop Environment
-1. Find drivers with 
-2. Install Xorg `sudo pacman -S xorg xterm xorg-xinit`
-3. Install 
+```
+127.0.0.1       localhost
+::1             localhost
+127.0.0.1       SCSArch
+```
+Ctrl+X, then Y to exit/save
+10. Install NetworkManager with `pacman -Sy networkmanager`
+11. Enable it on booth with `sudo systemctl enable NetworkManager.service`
+12. Start it up with `systemctl start NetworkManager.service`
+13. 
