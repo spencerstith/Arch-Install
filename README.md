@@ -1,7 +1,7 @@
 # Arch Installation Documentation | Spencer Stith
 
 ## Download & Verification
-1. Download from [here](http://mirrors.acm.wpi.edu/archlinux/iso/2021.10.01/)
+1. Download Arch isofrom [here](http://mirrors.acm.wpi.edu/archlinux/iso/2021.10.01/)
 2. Download signiature from [here](https://archlinux.org/download/)
 3. Verify the image using
 ```bash
