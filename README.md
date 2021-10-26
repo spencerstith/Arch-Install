@@ -24,14 +24,15 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 
 ## Installation & Configuration
 1. Install the essentials with `pacstrap /mnt base linux linux-firmware`
-2. Generate the fstab with `genfstab -U /mnt >> /mnt/etc/fstab`
-3. Enter the disk as root with `arch-chroot /mnt`
-4. `exit`
-5. Set the timezone with `ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime` then `hwclock --systohc`
-6. Generate locales with `locale-gen`
-7. Set the hostname with `echo SCSArch > /etc/hostname`
-8. Add hosts with `nano /etc/hosts`
-9. Add:
+2. Install nano with `sudo pacman -Sy nano`
+3. Generate the fstab with `genfstab -U /mnt >> /mnt/etc/fstab`
+4. Enter the disk as root with `arch-chroot /mnt`
+5. `exit`
+6. Set the timezone with `ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime` then `hwclock --systohc`
+7. Generate locales with `locale-gen` then `echo en_US.UTF-8 > /etc/locale.conf`
+8. Set the hostname with `echo SCSArch > /etc/hostname`
+9. Add hosts with `nano /etc/hosts`
+10. Add:
 
 ```
 127.0.0.1       localhost
@@ -39,6 +40,7 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 127.0.0.1       SCSArch
 ```
 Ctrl+X, then Y to exit/save
+
 10. Install NetworkManager with `pacman -Sy networkmanager`
 11. Enable it on booth with `sudo systemctl enable NetworkManager.service`
 12. Start it up with `systemctl start NetworkManager.service`
