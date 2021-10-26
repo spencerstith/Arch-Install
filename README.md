@@ -53,4 +53,14 @@ Ctrl+X, then Y to exit/save
 5. Configuration: `grub-mkconfig -o /boot/grub/grub.cfg`
 
 ## GNOME
-1. 
+1. Install X environment: `pacman -S xorg`
+2. Install GNOME: `pacman -S gnome`
+3. Enable the display manager and NetworkManager:
+
+```bash
+systemctl start gdm.service
+systemctl enable gdm.service
+systemctl enable NetowrkManager.service
+```
+4. Exit chroot: `exit `
+5. Reboot: `sudo reboot`
