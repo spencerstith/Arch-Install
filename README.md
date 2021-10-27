@@ -185,3 +185,4 @@ yay -S google-chrome
 5. Browser -> GH pages, Harvey
 6. ssh into gateway
 7. Chrome is on the AUR
+8. Struggles and Problems
