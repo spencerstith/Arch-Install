@@ -23,11 +23,11 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 2. Go to new from `free space`
 3. -> Default first sector
 4. -> Size: `512M`
-5. -> Hex: ef00
+5. -> Hex: `ef00`
 6. -> Name: `boot`
 7. Go to new from `free space`
 8. -> Default first sector
-9. -> Size: `500M`
+9. -> Size: `1G`
 10. -> Hex: 8200
 11. -> Name: `swap`
 12. Go to new from `free space`
@@ -66,7 +66,7 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 3. Generate locale settings: `nano /etc/locale.gen`
 4. Uncomment `en_US.UTF-8`
 5. Run `locale-gen`
-6. Create locale configurations: `nano /locale.conf`
+6. Create locale configurations: `nano /etc/locale.conf`
 7. -> Add `LANG=en_US.UTF-8`
 
 ### ⚡️ Networking ⚡️
@@ -129,4 +129,38 @@ DHCP=yes
 
 ## 💅🏻 Customization 💅🏻
 ###  GNOME
-1. 
+1. Install: `sudo pacman -S xorg gnome gnome-extra gdm`
+2. Enable the display manager: `sudo systemctl enable gdm`
+3. Reboot: `reboot`
+
+### 🌈 Command Line 🌈
+1. Install ZSH (thank god): `sudo pacman -S zsh`
+2. -> `zsh`
+3. -> Go through all settings, choosing defaults
+4. Make ZSH the default shell: `chsh -s /usr/bin/szh`
+5. Color the terminal
+6. -> `PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '`
+7. -> `RPROMPT='[%F{yellow}%?%f]'`
+8. Install oh-my-zsh
+9. -> Install git: `sudo -S pacman git`
+10. -> Install oh-my-zsh
+
+### 🌉 Gateway 🌉
+1. Install ssh: `sudo pacman -S openssh`
+2. ssh to the bridge: `ssh 129.244.245.21 -p53997`
+3. ssh to the VM: `ssh -p53997 admin@192.168.2.39`
+
+### ✂️ Shortcuts/aliases
+1. Colorize ls output: `alias ls='ls la --color=auto'`
+2. Free memory: `alias meminfo='free -m -l -t'`
+3. IP address: `alias myip='curl http://ipecho.net/plain; echo'`
+4. git add all: `alias gaa='git add all'`
+5. git checkout master: `alias gcm='git checkout master'`
+6. Since I have oh-my-zsh now, there are some neat commands already aliased:
+7. -> Most common commands: `zsh_stats`
+8. -> No `cd` is ever needed
+9. -> 
+
+*Notes/Struggles*
+* I only did the minimum on coloring because it will go away with oh-my-zsh, and I know customization is a big part of this project, so I think it will suffice.
+* I was really hoping to use iTerm2 but that's only on mac
