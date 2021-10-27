@@ -26,15 +26,14 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 12. Mount: `mount /dev/sda2 /mnt`
 
 ## Installation & Configuration
-1. Install necessary packagets: `pacstrap /mnt base linux linux-firmware`
+1. Install necessary packagets: `pacstrap /mnt base linux linux-firmware nano`
 3. Generate the fstab: `genfstab -U /mnt >> /mnt/etc/fstab`
 4. Enter the disk as root: `arch-chroot /mnt`
-5. Install nano: `pacman -Sy nano`
-6. Set the timezone: `ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime` then `hwclock --systohc`
-7. Generate locales: `locale-gen` then `echo en_US.UTF-8 > /etc/locale.conf`
-8. Set the hostname: `echo SCSArch > /etc/hostname`
-9. Add hosts: `nano /etc/hosts`
-10. Put:
+5. Set the timezone: `ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime` then `hwclock --systohc`
+6. Generate/set locales: `sed -i 's/#en_US.UTF-8/en_US.UTF-8/g' /etc/locale.gen` then `locale-gen`
+7. Set the hostname: `echo SCSArch > /etc/hostname`
+8. Add hosts: `nano /etc/hosts`
+9. Put:
 
 ```
 127.0.0.1       localhost
@@ -46,11 +45,13 @@ Ctrl+X, then Y to exit/save
 10. Change root password: `passwd`
 
 ## Bootloader
-1. Install GRUB: `pacman -S grub efibootmgr`
-2. Create partition: `mkdir /boot/efi`
-3. Mount that bad boy: `mount /dev/sda1 /boot/efi`
-4. Install: `grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi`
-5. Configuration: `grub-mkconfig -o /boot/grub/grub.cfg`
+1. Install GRUB and other tools: `pacman -S grub efibootmgr dosfstools os-prober mtools linux-headers linux-lts linux-lts-headers`
+2. Create partition: `mkdir /boot/EFI`
+3. Mount that bad boy: `mount /dev/sda1 /boot/EFI`
+4. Install: `grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck`
+5. Set GRUB's locale: `cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo`
+6. Configuration: `grub-mkconfig -o /boot/grub/grub.cfg`
+7. `exit`, `umount -a`, `reboo t`
 
 ## GNOME
 1. Install X environment: `pacman -S xorg`
