@@ -156,11 +156,32 @@ DHCP=yes
 3. IP address: `alias myip='curl http://ipecho.net/plain; echo'`
 4. git add all: `alias gaa='git add all'`
 5. git checkout master: `alias gcm='git checkout master'`
-6. Since I have oh-my-zsh now, there are some neat commands already aliased:
-7. -> Most common commands: `zsh_stats`
-8. -> No `cd` is ever needed
-9. -> 
+6. Show sudoers: `alias sudoers="awk -F':' '{ print $1}' /etc/passwd"`
+7. Since I have oh-my-zsh now, there are some neat commands already aliased:
+8. -> Most common commands: `zsh_stats`
+9. -> No `cd` is ever needed
 
 *Notes/Struggles*
 * I only did the minimum on coloring because it will go away with oh-my-zsh, and I know customization is a big part of this project, so I think it will suffice.
 * I was really hoping to use iTerm2 but that's only on mac
+
+### 👀 Chrome 👀
+There is a version of Google Chrome on the Arch User Repository!
+Install an AUR Helper
+```bash
+sudo pacman -S --needed base-devel git
+git clone https://aur.archlinux.org/yay-git.git
+cd yay
+makepkg -si
+yay -S google-chrome
+```
+
+
+## 🚶🏻‍♂️Walkthrough video 🚶🏻‍♂️
+1. Show ip: `myip`
+2. User list: `cat /etc/passwd`
+3. Sudoers: `sudoers`
+4. Show some aliases
+5. Browser -> GH pages, Harvey
+6. ssh into gateway
+7. Chrome is on the AUR
