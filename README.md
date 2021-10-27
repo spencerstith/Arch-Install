@@ -28,7 +28,7 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 7. Go to new from `free space`
 8. -> Default first sector
 9. -> Size: `1G`
-10. -> Hex: 8200
+10. -> Hex: `8200`
 11. -> Name: `swap`
 12. Go to new from `free space`
 13. -> Default first sector
@@ -48,6 +48,7 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 2. -> `mkfs.fat -F32 /dev/sda1`
 3. -> `mkswap /dev/sda2`
 4. -> `mkfs.ext4 /dev/sda3`
+
 ### 🐎 Mount partitions 🐎
 1. -> `mount /dev/sda3 /mnt`
 2. -> `swapon /dev/sda2`
@@ -98,7 +99,7 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 3. -> `systemctl start systemd-resolved`
 4. Find network devices: `networkctl list`
 5. Note our network adapter
-6. Congigure it: `nano /etc/systemd/network/20-wired.network`
+6. Configure it: `nano /etc/systemd/network/20-wired.network`
 
 ```bash
 [Match]
